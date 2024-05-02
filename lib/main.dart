@@ -8,7 +8,7 @@ import 'package:table_calendar/table_calendar.dart';
 void main() => runApp(const DatePickerApp());
 
 class DatePickerApp extends StatelessWidget {
-  const DatePickerApp({super.key});
+  const DatePickerApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class DatePickerApp extends StatelessWidget {
 }
 
 class DatePickerExample extends StatefulWidget {
-  const DatePickerExample({super.key});
+  const DatePickerExample({Key key}) : super(key: key);
 
   @override
   State<DatePickerExample> createState() => _DatePickerExampleState();
@@ -36,16 +36,16 @@ class Event {
   final DateTime date;
   final EventType type;
   const Event({
-    required this.name,
-    required this.date,
-    required this.type
+    @required this.name,
+    @required this.date,
+    @required this.type
   });
 }
 
 class _DatePickerExampleState extends State<DatePickerExample> {
-  late DateTime _today, _lastDay, _focusedDay, _selectedDay;
-  late final List<DateTime> _schoolWhitelist;
-  late final List<Event> events;
+  DateTime _today, _lastDay, _focusedDay, _selectedDay;
+  List<DateTime> _schoolWhitelist;
+  List<Event> events;
   List<Event> _eventsToShow = [];
 
   DateTime onlyDay(DateTime dt) => DateTime.utc(dt.year, dt.month, dt.day);
